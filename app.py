@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 import requests
+import os
 
 app = Flask(__name__)
 
-MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/4bwkcdcowvn7xs96cg6jgglnt4m2l2yd"  # Replace this later
+# ✅ Replace this with your real Make.com webhook URL
+MAKE_WEBHOOK_URL = os.getenv("MAKE_WEBHOOK_URL", "https://hook.eu2.make.com/4bwkcdcowvn7xs96cg6jgglnt4m2l2yd")
 
 @app.route('/')
 def home():
@@ -25,3 +27,8 @@ def upload_file():
         "make_status": response.status_code,
         "make_response": response.text
     })
+
+# ✅ REQUIRED: This makes it work on Render’s free port system
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 10000)))
+
