@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-MAKE_WEBHOOK_URL = "https://hook.us1.make.com/YOUR_UNIQUE_WEBHOOK"  # Replace this later
+MAKE_WEBHOOK_URL = "https://hook.eu2.make.com/4bwkcdcowvn7xs96cg6jgglnt4m2l2yd"  # Replace this later
 
 @app.route('/')
 def home():
